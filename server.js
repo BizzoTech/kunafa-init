@@ -87,7 +87,17 @@ const {
   }
 
   try {
-   await eventsReplicator.put({_id: "events_to_main", source: eventsDbUrl, target: mainDbUrl, continuous: true});
+   await eventsReplicator.put({
+     _id: "events_to_main",
+     source: eventsDbUrl,
+     target: mainDbUrl,
+     continuous: true,
+     selector: {
+       status: {
+        "$in": ["done", "archived", "deleted"]
+       }
+     }
+   });
   } catch (e) {
    if (e.status != 409) {
     throw e;
