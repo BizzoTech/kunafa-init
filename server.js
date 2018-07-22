@@ -77,7 +77,10 @@ const {
     target: eventsDbUrl,
     continuous: true,
     selector: {
-     type: "EVENT"
+     type: "EVENT",
+     _deleted: {
+       $ne : true
+     }
     }
    });
   } catch (e) {
@@ -111,7 +114,10 @@ const {
     target: notificationsDbUrl,
     continuous: true,
     selector: {
-     type: "notification"
+     type: "notification",
+     _deleted: {
+       $ne : true
+     }
     }
    });
   } catch (e) {
