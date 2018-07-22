@@ -79,7 +79,7 @@ const {
     selector: {
      type: "EVENT",
      _deleted: {
-       $ne : true
+      $exists: false
      }
     }
    });
@@ -116,7 +116,7 @@ const {
     selector: {
      type: "notification",
      _deleted: {
-       $ne : true
+      $exists: false	
      }
     }
    });
